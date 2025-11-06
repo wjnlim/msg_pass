@@ -2,16 +2,13 @@
 #include <stdio.h>
 #include <pthread.h>
 
-// #include "ep_engine/epoll_event_engine.h"
 #include "ep_engine/epoll_event_engine.h"
 #include "msg_pass/mp_server.h"
-// #include "mp_msg_buf.h"
 
 #define SERVER_PORT 30030
 #define NUM_WORKER_THREAD 4
 
 void handle_request(Mp_srv_request* request, void* cb_arg) {
-    // char* req_msg = req->req_msg;
     const char* req_msg = request->msg;
     // do work with req_msg
     int n;
@@ -31,13 +28,7 @@ int main(int argc, char** argv) {
     EP_engine* engine = ep_engine_create(true, NUM_WORKER_THREAD);
     Mp_server* server = mp_server_create(SERVER_PORT, engine, handle_request, NULL);
     
-    // pthread_t tid = ep_engine_start_event_loop(engine);
     ep_engine_start_event_loop(engine);
-
-    // pthread_join(tid, NULL);
-
-    // mp_server_destroy(server);
-    // ep_engine_destroy(engine);
 
     return 0;
 }
