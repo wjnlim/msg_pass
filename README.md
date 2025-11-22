@@ -34,6 +34,7 @@ It offers:
   - This project is mainly for personal use, not for production codes.\
   Thus, the code may lack thorough testing, so please use it with caution.
   - This project uses my [ep_engine](https://github.com/wjnlim/ep_engine.git) library. The CMake file will automatically fetch the project internally
+  - This library depends on pthread, so you must link with **-lpthread**
 ---
 
 ## Build and Installation
